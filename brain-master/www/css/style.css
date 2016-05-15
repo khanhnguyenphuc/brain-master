@@ -4,6 +4,8 @@
 	padding: 10px;
 	margin: 10px;
 	border-radius: 10px !important;
+	-webkit-transition:0.5s;
+  	transition:0.5s;
 }
 .item a {
 	color: orange;
@@ -14,4 +16,53 @@
   color:white;
 -webkit-transform:rotate(-1deg);
   transform:rotate(-2deg);
+}
+
+.time-title, .error-title, .gameover-title {
+	font-size: 40px;
+	text-align: center;
+}
+.time-count, .error-count, .score-count, .high-score-count {
+	font-size: 50px;
+	color: white;
+	border-radius: 10px;
+}
+.error-count {
+	background-color: lightcoral;
+}
+.time-count {
+	background-color: lightseagreen;
+}
+.eyetest-content{
+	margin: auto;
+}
+.score-count, .high-score-count {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	line-height: 120px;
+	color: white;
+	background-color: lightgreen;
+	margin: 10px auto;
+}
+.high-score-count {
+	background-color: lightcoral;
+
+}
+.game-over {
+	position: absolute;
+	top: 30%;
+	z-index: 99999;
+}
+.game-over button {
+	margin: 10px;
+	background: transparent;
+	padding: 0;
+	border: 0;
+}
+footer {
+	margin: 8px;
+}
+.score-title div{
+	width: 120px;
 }

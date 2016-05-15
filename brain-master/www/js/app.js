@@ -48,6 +48,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'HomeCtrl'
       }
     }
+  }).state('playgame', {
+    url: '/playgame',
+    templateUrl: 'templates/playgame.html',
+        controller: 'GameCtrl'
   })
 
   .state('tab.chats', {
@@ -58,6 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'ChatsCtrl'
         }
       }
+
     })
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
