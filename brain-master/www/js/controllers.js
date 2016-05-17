@@ -101,7 +101,7 @@ app.controller('HomeCtrl', function($scope) {})
   $scope.level = myconfig.level;
   $scope.gameover = false;
   $scope.gameTimeout = null;
-  console.log(myconfig);
+  $scope.countAnswer = 0;
   $scope.reInit = function() {
     
     this.score = myconfig.score;
@@ -110,6 +110,7 @@ app.controller('HomeCtrl', function($scope) {})
     this.level = myconfig.level;
     this.gameover = false;
     this.gameTimeout = null;
+    this.countAnswer = 0;
   };
 
   $scope.startGame = function() {
@@ -122,7 +123,15 @@ app.controller('HomeCtrl', function($scope) {})
     var width = window.innerWidth;
     var height = window.innerHeight;
     var grid = colorTestLevelGrid(this.level);
-    var specialCell = Math.floor((Math.random() * grid * grid));
+    $scope.arrCellRand = [];
+    var specialCell;
+    for (var i = 0; i < grid * grid; i++) {
+      specialCell = Math.floor((Math.random() * grid * grid));
+      if ($scope.arrCellRand.indexOf(specialCell) < 0) {
+        $scope.arrCellRand.push(specialCell);
+      }
+      if ($scope.arrCellRand.length == grid) break;
+    }
 
     if (width <= 330) {
       width =  height/2 - 20;
@@ -135,6 +144,7 @@ app.controller('HomeCtrl', function($scope) {})
     }
 
     this.gameover = false;
+    this.countAnswer = 0;
     this.elems.$box.width(width);
     this.elems.$box.height(width);
     this.elems.$box.css('visibility', '');
@@ -149,7 +159,7 @@ app.controller('HomeCtrl', function($scope) {})
         'width': (100/grid).toString()+'%',
         'height': (100/grid).toString()+'%',
         'backgroundColor': color.general});
-      if (j == specialCell) {
+      if ($scope.arrCellRand.indexOf(j) >= 0) {
         td.css('backgroundColor', color.differrent);
         td.addClass('specialCell');
       } else {
@@ -172,7 +182,11 @@ app.controller('HomeCtrl', function($scope) {})
 
     if (answer) {
       // next 
-      $scope.score += 1;
+      this.countAnswer ++;
+      if (this.countAnswer !== colorTestLevelGrid(this.level)) {
+        return;
+      }
+      this.score += 1;
       this.gameTime = TIME; // reset game time
       // this.elems.$score.text(this.score);
       this.level++;
