@@ -1,0 +1,70 @@
+@font-face {
+	font-family: electric;
+	src: url(../fonts/ac.woff);
+}
+body {
+	font-family: electric;
+	font-size: 16px;
+}
+.eyetest-container {
+	margin-top: 50px;
+}
+.time-title, .error-title, .gameover-title {
+	font-size: 40px;
+	text-align: center;
+	line-height: 40px;
+}
+.time-count, .error-count, .score-count, .high-score-count {
+	line-height: 50px;
+	color: white;
+	border-radius: 10px;
+	height: 50px;
+	font-size: 50px;
+}
+.error-count {
+	background-color: lightcoral;
+}
+.time-count {
+	background-color: lightseagreen;
+}
+.eyetest-content{
+	margin: auto;
+}
+.score-count, .high-score-count {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	line-height: 120px;
+	color: white;
+	background-color: lightgreen;
+	margin: 10px auto;
+}
+.high-score-count {
+	background-color: lightcoral;
+
+}
+.game-over button {
+	margin: 10px;
+	background: transparent;
+	padding: 0;
+	border: 0;
+}
+footer {
+	margin: 8px;
+}
+.score-title div{
+	width: 120px;
+}
+.cell {
+	float: left; 
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+.menugame a {
+	text-decoration: none;
+}
+.menugame li {
+	margin-bottom: 5px;
+}

@@ -1,21 +1,27 @@
-<div class="score col">
-    <div class="container text-center high-score-count pull-left">0</div>
-    <div class="container text-center score-count pull-right">0</div>
-</div>
-<div class="score-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="pull-left text-center text-info">BEST</div>
-    <div class="pull-right text-center text-info">NEW</div>
-</div>
-
-<div class="eyetest-content"></div>
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="timer col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="time-title text-info">TIME</div>
-        <div class="bg-success time-count text-center">15</div>
+<div class="eyetest-container text-center">
+    <div class="score row">
+      <div class="col-50">
+        <div class="high-score-count ">0</div>
+        <span>BEST</span>
+      </div>
+      <div class="col-50">
+        <div class="score-count"><div>0</div></div>
+        <span>NEW</span>
+      </div>
+        
     </div>
 
-    <div class="errors col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <div class="error-title text-info">ERRORS</div>
-        <div class="bg-info text-center error-count">0</div>
+    <div class="eyetest-content">
+    </div>
+    <gameover></gameover>
+    <div class="row text-center">
+        <div class="timer col-50 padding">
+            <span class="time-title">TIME</span>
+            <div class="time-count text-center">15</div>
+        </div>
+        <div class="errors col-50 padding">
+            <span class="error-title">ERRORS</span>
+            <div class="error-count text-center">0</div>
+        </div>
     </div>
 </div>
