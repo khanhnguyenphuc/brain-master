@@ -218,21 +218,6 @@ app.controller('HomeCtrl', function($scope) {})
       $scope.endGame();
     else {
       $scope.gameTime -= 1;
-      // move($scope.elems.$timeCount[0])
-      // .ease('snap')
-      // .set('opacity', 1)
-      // .scale(1.4)
-      // .duration('0s')
-      // .end();
-
-      // move($scope.elems.$timeCount[0])
-      // .ease('out')
-      // .x(150)
-      // .rotate(140)
-      // .scale(0.1)
-      // .set('opacity', 1)
-      // .duration('1s')
-      // .end();
       $scope.elems.$timeCount.text($scope.gameTime);
     }
   };

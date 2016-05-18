@@ -4,6 +4,7 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
+  var myDataRef = new Firebase('https://popping-heat-5459.firebaseio.com/');
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -30,7 +31,24 @@ angular.module('starter.services', [])
     lastText: 'This is wicked good ice cream.',
     face: 'img/mike.png'
   }];
+  myDataRef.on('child_added', function(snapshot) {
+    var message = snapshot.val();
+    displayChatMessage(message.name, message.text);
+  });
 
+  function displayChatMessage(name, text) {
+    $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+  }
+
+  $('#messageInput').keypress(function (e) {
+    if (e.keyCode == 13) {
+      var name = $('#nameInput').val();
+      var text = $('#messageInput').val();
+      myDataRef.push({name: name, text: text});
+      $('#messageInput').val('');
+    }
+  });
   return {
     all: function() {
       return chats;
@@ -45,6 +63,12 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    set: function(user, message) {
+      myDataRef.set({
+        user: user,
+        message: message
+      })
     }
   };
 });
