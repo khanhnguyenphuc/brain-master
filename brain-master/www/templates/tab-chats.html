@@ -1,7 +1,8 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Chats" id="chat-content">
   <ion-content>
-    <div id='messagesDiv'></div>
+    <div id='messagesDiv' class="col"></div>
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
+    <button id="sendBtn"><i class="ion-ios-paperplane-outline" ng-click="send()"></i></button>
   </ion-content>
 </ion-view>

@@ -64,9 +64,6 @@ app.value('myconfig', {
   }
 });
 app.controller('HomeCtrl', function($scope) {})
-.controller('GameCtrl', function($scope) {
-  console.log(11111);
-})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -76,7 +73,12 @@ app.controller('HomeCtrl', function($scope) {})
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
+  $scope.send = function() {
+    if ($('#messageInput').val()) {
+      Chats.set('Mr.K', $('#messageInput').val());
+      $('#messageInput').val('');
+    }
+  };
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -135,12 +137,10 @@ app.controller('HomeCtrl', function($scope) {})
 
     if (width <= 330) {
       width =  height/2 - 20;
-    } else if (width > 330 && width <= 360) {
-      width =  width - width/5;
-    } else if (width > 360 && width <= 630) {
+    } else if (width > 330 && width <= 630) {
       width = width - width/5;
     } else {
-      width = width/3 - width/10;
+      width = width/2;
     }
 
     this.gameover = false;
@@ -168,7 +168,7 @@ app.controller('HomeCtrl', function($scope) {})
       this.elems.$box.append(td);
     }
     $('.specialCell').click(function(e) {
-      $scope.confirm(true);
+      $scope.confirm(true, $(this));
     });
     $('.normalCell').click(function(e) {
       $scope.confirm(false);
@@ -178,11 +178,16 @@ app.controller('HomeCtrl', function($scope) {})
       $scope.gameTimeout = $interval($scope.update, 1000);
     }
   };
-  $scope.confirm = function(answer) {
-
+  $scope.confirm = function(answer, ele) {
+    
     if (answer) {
-      // next 
-      this.countAnswer ++;
+      // next
+      var idx = $scope.arrCellRand.indexOf(ele.index()); 
+      if (idx >= 0) {
+        $scope.arrCellRand.splice(idx, 1);
+        this.countAnswer ++;
+      }
+      
       if (this.countAnswer !== colorTestLevelGrid(this.level)) {
         return;
       }

@@ -33,7 +33,7 @@ angular.module('starter.services', [])
   }];
   myDataRef.on('child_added', function(snapshot) {
     var message = snapshot.val();
-    displayChatMessage(message.name, message.text);
+    displayChatMessage(message.user, message.message);
   });
 
   function displayChatMessage(name, text) {
@@ -43,9 +43,9 @@ angular.module('starter.services', [])
 
   $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
-      var name = $('#nameInput').val();
+      var name = $('#nameInput').val() || 'Mr.K';
       var text = $('#messageInput').val();
-      myDataRef.push({name: name, text: text});
+      myDataRef.push({user: name, message: text});
       $('#messageInput').val('');
     }
   });
@@ -65,7 +65,7 @@ angular.module('starter.services', [])
       return null;
     },
     set: function(user, message) {
-      myDataRef.set({
+      myDataRef.push({
         user: user,
         message: message
       })

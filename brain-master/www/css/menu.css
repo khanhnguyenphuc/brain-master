@@ -1,0 +1,18 @@
+.menu-item {
+	background:#006680;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px !important;
+	-webkit-transition:0.5s;
+  	transition:0.5s;
+}
+.menu-item a {
+	color: orange;
+}
+
+.menu-item:hover {
+  background:#7A0000;
+  color:white;
+-webkit-transform:rotate(-1deg);
+  transform:rotate(-2deg);
+}
